@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RYU — Portfolio</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+    <link rel="icon" href="assets/img/favicon.jpg" />
+</head>
+<body>
+
+  <!-- ░░ PARTICLE BACKGROUND ░░ -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ░░ HEADER ░░ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">RYU<span class="logo-dot">.</span></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="pages/contact.html" class="nav-link">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html" class="mob-link">Home</a>
+      <a href="pages/contact.html" class="mob-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- ░░ MAIN ░░ -->
+  <main>
+
+    <!-- HERO / PROFILE -->
+    <section class="hero" id="hero">
+      <div class="hero-glow glow-purple"></div>
+      <div class="hero-glow glow-cyan"></div>
+      <div class="profile-wrapper">
+        <!--
+          ╔══════════════════════════════════════════╗
+          ║  TO CHANGE YOUR PROFILE PICTURE:         ║
+          ║  Replace the file at:                    ║
+          ║  assets/img/profile.jpg                  ║
+          ║  (any .jpg / .png / .webp works)          ║
+          ╚══════════════════════════════════════════╝
+        -->
+        <div class="profile-ring">
+          <img
+            src="assets/img/profile.jpg"
+            alt="RYU profile picture"
+            class="profile-img"
+            onerror="this.src='assets/img/profile-fallback.svg'"
+          />
+        </div>
+        <div class="scan-line"></div>
+      </div>
+      <h1 class="hero-name">RYU</h1>
+      <p class="hero-tagline">Developer &amp; Creator</p>
+      <div class="hero-badges">
+        <span class="badge badge-purple">Code</span>
+        <span class="badge badge-cyan">Design</span>
+        <span class="badge badge-red">Build</span>
+        <span class="badge badge-pink">Editor Manga/Manhwa</span>
+
+      </div>
+    </section>
+    <!-- PROJECTS -->
+    <section class="projects-section" id="projects">
+      <h2 class="section-title">
+        <span class="title-accent">//</span> Projects
+      </h2>
+      <div class="projects-grid">
+
+        <!-- PROJECT CARD 1 — AkibaBot -->
+        <article class="project-card" id="project-1">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <span class="card-tag">Project 01</span>
+            <div class="card-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">AkibaBot</h3>
+            <p class="card-desc">
+              A custom Discord bot built in Python, dedicated to a specific
+              server. Features moderation, anime content, role management,
+              interactive games, and automated utilities.
+            </p>
+            <div class="card-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">discord.py</span>
+              <span class="tech-tag">SQLite</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="pages/akibabot.html" class="btn-glass btn-purple">View Project</a>
+          </div>
+        </article>
+
+        <!-- PROJECT CARD 2 — SetupProTest -->
+        <article class="project-card" id="project-2">
+          <div class="card-glow card-glow--red"></div>
+          <div class="card-header">
+            <span class="card-tag">Project 02</span>
+            <div class="card-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">SetupProTest</h3>
+            <p class="card-desc">
+              A web app for testing all your desk peripherals in one place —
+              keyboard, mouse, controller, audio &amp; webcam, with real-time
+              diagnostics and live stats. No installs needed.
+            </p>
+            <div class="card-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="pages/setupprotest.html" class="btn-glass btn-red">View Project</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">RYU<span class="logo-dot">.</span></span>
+        <p class="footer-sub">Building the future, one line at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="pages/contact.html" class="footer-link">Contact</a>
+      </div>
+      <div class="footer-right">
+        <p class="footer-copy">&copy; <span id="year"></span> RYU. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-bar"></div>
+  </footer>
+
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

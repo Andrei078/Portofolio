@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetupProTest — RYU Projects</title>
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="../css/setupprotest.css" />
+  <link rel="icon" href="../assets/img/favicon.jpg" />
+</head>
+<body class="spt-page">
+
+  <canvas id="particle-canvas"></canvas>
+  <canvas id="grid-canvas"></canvas>
+
+  <!-- ░░ HEADER ░░ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">RYU<span class="logo-dot">.</span></a>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../pages/contact.html" class="nav-link">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="../index.html" class="mob-link">Home</a>
+      <a href="../pages/contact.html" class="mob-link">Contact</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══ HERO ══ -->
+    <section class="spt-hero">
+      <div class="spt-glow spt-glow--green"></div>
+      <div class="spt-glow spt-glow--white"></div>
+
+      <div class="spt-hero-inner">
+
+        <!-- Visual -->
+        <div class="spt-logo-wrap">
+          <div class="spt-logo-ring">
+            <svg class="spt-logo-svg" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="sptGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00ff88"/>
+                  <stop offset="100%" stop-color="#00ccff"/>
+                </linearGradient>
+                <filter id="sptGlow">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <circle cx="110" cy="110" r="100" stroke="url(#sptGrad)" stroke-width="1.5" stroke-dasharray="8 4" opacity="0.4"/>
+              <circle cx="110" cy="110" r="82" stroke="url(#sptGrad)" stroke-width="1" opacity="0.2"/>
+              <circle cx="110" cy="110" r="66" fill="rgba(0,255,136,0.05)" stroke="url(#sptGrad)" stroke-width="2" filter="url(#sptGlow)"/>
+              <!-- Keyboard icon -->
+              <g transform="translate(72, 78)" filter="url(#sptGlow)">
+                <rect x="0" y="0" width="76" height="44" rx="6" fill="none" stroke="url(#sptGrad)" stroke-width="2"/>
+                <rect x="6"  y="8"  width="8" height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.7"/>
+                <rect x="18" y="8"  width="8" height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.7"/>
+                <rect x="30" y="8"  width="8" height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.7"/>
+                <rect x="42" y="8"  width="8" height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.7"/>
+                <rect x="54" y="8"  width="16" height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.4"/>
+                <rect x="6"  y="20" width="12" height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.5"/>
+                <rect x="22" y="20" width="8"  height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.7"/>
+                <rect x="34" y="20" width="8"  height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.7"/>
+                <rect x="46" y="20" width="8"  height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.7"/>
+                <rect x="58" y="20" width="12" height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.5"/>
+                <rect x="18" y="32" width="40" height="7" rx="1.5" fill="url(#sptGrad)" opacity="0.6"/>
+              </g>
+              <!-- Mouse cursor -->
+              <g transform="translate(152, 140)" filter="url(#sptGlow)">
+                <path d="M0 0 L0 18 L5 13 L9 22 L12 21 L8 12 L14 12 Z" fill="url(#sptGrad)" opacity="0.8"/>
+              </g>
+              <!-- Tick marks -->
+              <line x1="110" y1="10" x2="110" y2="20" stroke="#00ff88" stroke-width="2" opacity="0.6"/>
+              <line x1="110" y1="200" x2="110" y2="210" stroke="#00ff88" stroke-width="2" opacity="0.6"/>
+              <line x1="10" y1="110" x2="20" y2="110" stroke="#00ff88" stroke-width="2" opacity="0.6"/>
+              <line x1="200" y1="110" x2="210" y2="110" stroke="#00ff88" stroke-width="2" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="spt-ping spt-ping--1"></div>
+          <div class="spt-ping spt-ping--2"></div>
+        </div>
+
+        <!-- Text -->
+        <div class="spt-hero-text">
+          <div class="spt-eyebrow">
+            <span class="spt-eyebrow-tag">Project_02</span>
+            <span class="spt-eyebrow-div">//</span>
+            <span class="spt-eyebrow-sub">Web App</span>
+          </div>
+          <h1 class="spt-title">
+            Setup<span class="spt-title-accent">Pro</span><span class="spt-title-dim">Test</span>
+          </h1>
+          <p class="spt-subtitle">Test Your Entire Setup — In One Place</p>
+          <p class="spt-desc">
+            A modern web application for testing all your desk peripherals.
+            Keyboard, mouse, controller, audio, and webcam — real-time
+            diagnostics with live stats, latency tracking, drift detection,
+            and audio channel isolation. All in the browser. No installs needed.
+          </p>
+          <div class="spt-tech-row">
+            <span class="spt-tech spt-tech--html">HTML5</span>
+            <span class="spt-tech spt-tech--css">CSS3</span>
+            <span class="spt-tech spt-tech--js">JavaScript</span>
+            <span class="spt-tech spt-tech--api">Gamepad API</span>
+            <span class="spt-tech spt-tech--api">Media API</span>
+          </div>
+          <div class="spt-cta-row">
+            <a href="https://github.com/Andrei078/SetupProTest" class="spt-btn spt-btn--primary" target="_blank">
+              <svg class="spt-btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+              View on GitHub
+            </a>
+            <a href="#testers" class="spt-btn spt-btn--secondary">
+              <svg class="spt-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+              Explore Testers
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-hint-line spt-scroll-line"></span>
+        <span class="scroll-hint-text">SCROLL</span>
+      </div>
+    </section>
+
+    <!-- ══ STATS ══ -->
+    <section class="spt-stats">
+      <div class="spt-container">
+        <div class="spt-stats-row">
+          <div class="spt-stat">
+            <span class="spt-stat-num">5</span>
+            <span class="spt-stat-lbl">Peripheral Testers</span>
+          </div>
+          <div class="spt-stat-div"></div>
+          <div class="spt-stat">
+            <span class="spt-stat-num">0</span>
+            <span class="spt-stat-lbl">Installs Needed</span>
+          </div>
+          <div class="spt-stat-div"></div>
+          <div class="spt-stat">
+            <span class="spt-stat-num">RT</span>
+            <span class="spt-stat-lbl">Real-Time Stats</span>
+          </div>
+          <div class="spt-stat-div"></div>
+          <div class="spt-stat">
+            <span class="spt-stat-num">3</span>
+            <span class="spt-stat-lbl">Controller Types</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TESTERS ══ -->
+    <section class="spt-testers" id="testers">
+      <div class="spt-container">
+        <div class="spt-section-header">
+          <p class="spt-section-label">// PERIPHERALS</p>
+          <h2 class="spt-section-title">What You Can Test</h2>
+          <p class="spt-section-sub">Five dedicated testing modules — each built around real browser APIs for accurate, live results.</p>
+        </div>
+
+        <div class="spt-testers-grid">
+
+          <!-- KEYBOARD -->
+          <div class="spt-tester-card spt-card--featured" data-color="green">
+            <div class="spt-card-glow"></div>
+            <div class="spt-card-top">
+              <div class="spt-card-icon spt-icon--green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="2" y="6" width="20" height="13" rx="2"/>
+                  <line x1="6" y1="10" x2="6.01" y2="10"/><line x1="10" y1="10" x2="10.01" y2="10"/>
+                  <line x1="14" y1="10" x2="14.01" y2="10"/><line x1="18" y1="10" x2="18.01" y2="10"/>
+                  <line x1="6" y1="14" x2="6.01" y2="14"/><line x1="18" y1="14" x2="18.01" y2="14"/>
+                  <line x1="10" y1="17" x2="14" y2="17"/>
+                </svg>
+              </div>
+              <div>
+                <span class="spt-card-num">01</span>
+                <h3 class="spt-card-title">Keyboard Tester</h3>
+              </div>
+            </div>
+            <p class="spt-card-desc">Press any key and watch it light up in real time. Detects every keypress, measures input latency in milliseconds, and identifies stuck or unresponsive keys. Perfect for testing mechanical switches.</p>
+            <ul class="spt-feature-list">
+              <li><span class="spt-check">✓</span> Real-time key press visualisation</li>
+              <li><span class="spt-check">✓</span> Input latency measurement (ms)</li>
+              <li><span class="spt-check">✓</span> Stuck key detection</li>
+              <li><span class="spt-check">✓</span> Full keyboard layout display</li>
+            </ul>
+            <div class="spt-card-footer">
+              <code class="spt-file-tag">Keyboard.html</code>
+              <code class="spt-file-tag">Keyboard.js</code>
+            </div>
+          </div>
+
+          <!-- MOUSE -->
+          <div class="spt-tester-card" data-color="cyan">
+            <div class="spt-card-glow spt-cglow--cyan"></div>
+            <div class="spt-card-top">
+              <div class="spt-card-icon spt-icon--cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M6 3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/>
+                  <line x1="12" y1="3" x2="12" y2="11"/>
+                  <path d="M12 11a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="spt-card-num">02</span>
+                <h3 class="spt-card-title">Mouse Tester</h3>
+              </div>
+            </div>
+            <p class="spt-card-desc">Track movement accuracy, click response time, and scroll precision on a live canvas. Detects double-click issues and visualises your cursor trail to expose jitter or sensor problems.</p>
+            <ul class="spt-feature-list">
+              <li><span class="spt-check spt-check--cyan">✓</span> Live cursor tracking canvas</li>
+              <li><span class="spt-check spt-check--cyan">✓</span> Click response time (ms)</li>
+              <li><span class="spt-check spt-check--cyan">✓</span> Scroll wheel precision test</li>
+              <li><span class="spt-check spt-check--cyan">✓</span> Jitter &amp; sensor visualisation</li>
+            </ul>
+            <div class="spt-card-footer">
+              <code class="spt-file-tag spt-tag--cyan">Mouse.html</code>
+              <code class="spt-file-tag spt-tag--cyan">Mouse.js</code>
+            </div>
+          </div>
+
+          <!-- CONTROLLER -->
+          <div class="spt-tester-card" data-color="purple">
+            <div class="spt-card-glow spt-cglow--purple"></div>
+            <div class="spt-card-top">
+              <div class="spt-card-icon spt-icon--purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M6 12H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2"/>
+                  <path d="M18 12h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2"/>
+                  <path d="M6 9a6 6 0 0 1 12 0v10H6V9z"/>
+                  <line x1="9" y1="12" x2="9" y2="16"/><line x1="7" y1="14" x2="11" y2="14"/>
+                  <circle cx="15" cy="13" r="1" fill="currentColor"/>
+                  <circle cx="17" cy="15" r="1" fill="currentColor"/>
+                </svg>
+              </div>
+              <div>
+                <span class="spt-card-num">03</span>
+                <h3 class="spt-card-title">Controller Tester</h3>
+              </div>
+            </div>
+            <p class="spt-card-desc">Plug in any controller and see every button, trigger, and stick respond on a visual layout. Supports Xbox, PS4 &amp; PS5. Auto-detects the device and displays stick drift in real time.</p>
+            <ul class="spt-feature-list">
+              <li><span class="spt-check spt-check--purple">✓</span> Xbox / PS4 / PS5 support</li>
+              <li><span class="spt-check spt-check--purple">✓</span> Stick drift detection</li>
+              <li><span class="spt-check spt-check--purple">✓</span> Trigger pressure monitoring</li>
+              <li><span class="spt-check spt-check--purple">✓</span> Rumble / vibration test</li>
+            </ul>
+            <div class="spt-card-footer">
+              <code class="spt-file-tag spt-tag--purple">Controller.html</code>
+              <code class="spt-file-tag spt-tag--purple">Controller.js</code>
+            </div>
+          </div>
+
+          <!-- AUDIO -->
+          <div class="spt-tester-card" data-color="orange">
+            <div class="spt-card-glow spt-cglow--orange"></div>
+            <div class="spt-card-top">
+              <div class="spt-card-icon spt-icon--orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M9 18V5l12-2v13"/>
+                  <circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <span class="spt-card-num">04</span>
+                <h3 class="spt-card-title">Audio Tester</h3>
+              </div>
+            </div>
+            <p class="spt-card-desc">Isolate left and right audio channels to detect balance issues or blown drivers. Play a test tone and check microphone input levels. Works with headsets, speakers, and any audio device.</p>
+            <ul class="spt-feature-list">
+              <li><span class="spt-check spt-check--orange">✓</span> L / R channel isolation test</li>
+              <li><span class="spt-check spt-check--orange">✓</span> Test tone playback</li>
+              <li><span class="spt-check spt-check--orange">✓</span> Microphone input monitoring</li>
+              <li><span class="spt-check spt-check--orange">✓</span> Volume level visualiser</li>
+            </ul>
+            <div class="spt-card-footer">
+              <code class="spt-file-tag spt-tag--orange">audio.html</code>
+              <code class="spt-file-tag spt-tag--orange">audio.js</code>
+            </div>
+          </div>
+
+          <!-- WEBCAM -->
+          <div class="spt-tester-card" data-color="blue">
+            <div class="spt-card-glow spt-cglow--blue"></div>
+            <div class="spt-card-top">
+              <div class="spt-card-icon spt-icon--blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M23 7l-7 5 7 5V7z"/>
+                  <rect x="1" y="5" width="15" height="14" rx="2"/>
+                </svg>
+              </div>
+              <div>
+                <span class="spt-card-num">05</span>
+                <h3 class="spt-card-title">Webcam Tester</h3>
+              </div>
+            </div>
+            <p class="spt-card-desc">Instantly preview your webcam feed in the browser with no drivers or plugins needed. Verify resolution, frame rate, and image quality before any meeting or streaming session.</p>
+            <ul class="spt-feature-list">
+              <li><span class="spt-check spt-check--blue">✓</span> Live video preview</li>
+              <li><span class="spt-check spt-check--blue">✓</span> Resolution &amp; FPS display</li>
+              <li><span class="spt-check spt-check--blue">✓</span> No plugins required</li>
+              <li><span class="spt-check spt-check--blue">✓</span> Multi-camera selection</li>
+            </ul>
+            <div class="spt-card-footer">
+              <code class="spt-file-tag spt-tag--blue">Webcam.html</code>
+              <code class="spt-file-tag spt-tag--blue">Webcam.js</code>
+            </div>
+          </div>
+
+          <!-- SETTINGS -->
+          <div class="spt-tester-card" data-color="gray">
+            <div class="spt-card-top">
+              <div class="spt-card-icon spt-icon--gray">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="spt-card-num">06</span>
+                <h3 class="spt-card-title">Settings</h3>
+              </div>
+            </div>
+            <p class="spt-card-desc">Customise the testing experience. Adjust sensitivity thresholds, toggle visual effects, select input devices, and configure latency display preferences to match your workflow.</p>
+            <ul class="spt-feature-list">
+              <li><span class="spt-check spt-check--gray">✓</span> Input device selection</li>
+              <li><span class="spt-check spt-check--gray">✓</span> Sensitivity thresholds</li>
+              <li><span class="spt-check spt-check--gray">✓</span> Visual effects toggle</li>
+              <li><span class="spt-check spt-check--gray">✓</span> Latency display options</li>
+            </ul>
+            <div class="spt-card-footer">
+              <code class="spt-file-tag spt-tag--gray">Setting.html</code>
+              <code class="spt-file-tag spt-tag--gray">Setting.js</code>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TECH STACK ══ -->
+    <section class="spt-stack">
+      <div class="spt-container">
+        <div class="spt-section-header">
+          <p class="spt-section-label">// BUILT WITH</p>
+          <h2 class="spt-section-title">Tech Stack</h2>
+        </div>
+        <div class="spt-stack-grid">
+          <div class="spt-stack-item"><div class="spt-stack-icon" style="color:#e34f26"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg></div><span class="spt-stack-name">HTML5</span></div>
+          <div class="spt-stack-item"><div class="spt-stack-icon" style="color:#1572b6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414v-.001z"/></svg></div><span class="spt-stack-name">CSS3</span></div>
+          <div class="spt-stack-item"><div class="spt-stack-icon" style="color:#f7df1e"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg></div><span class="spt-stack-name">JavaScript</span></div>
+          <div class="spt-stack-item"><div class="spt-stack-icon" style="color:#00ff88"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="10" y1="6" x2="14" y2="6"/><circle cx="12" cy="16" r="2"/></svg></div><span class="spt-stack-name">Gamepad API</span></div>
+          <div class="spt-stack-item"><div class="spt-stack-icon" style="color:#00ccff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><span class="spt-stack-name">Media API</span></div>
+          <div class="spt-stack-item"><div class="spt-stack-icon" style="color:#a0a0c0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><span class="spt-stack-name">Responsive</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BROWSER COMPAT ══ -->
+    <section class="spt-compat">
+      <div class="spt-container">
+        <div class="spt-section-header">
+          <p class="spt-section-label">// COMPATIBILITY</p>
+          <h2 class="spt-section-title">Browser Support</h2>
+        </div>
+        <div class="spt-compat-grid">
+          <div class="spt-compat-item">
+            <span class="spt-compat-name">Chrome</span>
+            <span class="spt-compat-badge spt-badge--green">✓ Full Support</span>
+          </div>
+          <div class="spt-compat-item">
+            <span class="spt-compat-name">Edge</span>
+            <span class="spt-compat-badge spt-badge--green">✓ Full Support</span>
+          </div>
+          <div class="spt-compat-item">
+            <span class="spt-compat-name">Brave</span>
+            <span class="spt-compat-badge spt-badge--yellow">⚠ Shields Off Required</span>
+          </div>
+          <div class="spt-compat-item">
+            <span class="spt-compat-name">Firefox</span>
+            <span class="spt-compat-badge spt-badge--yellow">⚠ Limited Gamepad</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BACK ══ -->
+    <section class="spt-back">
+      <div class="spt-container">
+        <a href="../index.html" class="spt-back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Back to Portfolio
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">RYU<span class="logo-dot">.</span></span>
+        <p class="footer-sub">Building the future, one line at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html" class="footer-link">Home</a>
+        <a href="../pages/contact.html" class="footer-link">Contact</a>
+      </div>
+      <div class="footer-right">
+        <p class="footer-copy">&copy; <span id="year"></span> RYU. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-bar"></div>
+  </footer>
+
+  <script src="../js/particles.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/setupprotest.js"></script>
+</body>
+</html>

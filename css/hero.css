@@ -1,0 +1,212 @@
+/* ═══════════════════════════════════════════
+   hero.css  —  Profile / Hero section
+   ═══════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 6rem 1.5rem 4rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ── Profile picture ring ── */
+.profile-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 0.5rem;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+.profile-ring {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  padding: 4px;
+  background: conic-gradient(
+    var(--purple),
+    var(--cyan),
+    var(--red),
+    var(--purple)
+  );
+  animation: spin-ring 8s linear infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes spin-ring {
+  from { filter: hue-rotate(0deg);   }
+  to   { filter: hue-rotate(360deg); }
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg);
+  background: var(--bg-3);
+}
+
+/* Scan-line overlay on profile */
+.scan-line {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 229, 255, 0.04) 3px,
+    rgba(0, 229, 255, 0.04) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Outer glow ring */
+.profile-ring::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--purple-glow),
+    var(--cyan-glow),
+    var(--red-glow),
+    var(--purple-glow)
+  );
+  filter: blur(14px);
+  z-index: -1;
+  animation: spin-ring 8s linear infinite;
+  opacity: 0.7;
+}
+
+/* ── Name ── */
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  background: linear-gradient(
+    135deg,
+    var(--purple-light) 0%,
+    var(--cyan) 50%,
+    var(--red-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  animation: name-reveal 1s ease both;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-name::after {
+  content: 'RYU';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(24px);
+  opacity: 0.45;
+  z-index: -1;
+}
+
+@keyframes name-reveal {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* ── Tagline ── */
+.hero-tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+  color: var(--text-2);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  animation: name-reveal 1s 0.2s ease both;
+}
+
+.hero-tagline::before {
+  content: '> ';
+  color: var(--cyan);
+}
+
+/* ── Badges ── */
+.hero-badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: name-reveal 1s 0.4s ease both;
+}
+
+.badge {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid;
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  transition: var(--transition);
+}
+
+.badge:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.badge-purple {
+  background: rgba(155, 48, 255, 0.15);
+  border-color: rgba(155, 48, 255, 0.5);
+  color: var(--purple-light);
+  box-shadow: 0 0 16px rgba(155, 48, 255, 0.2);
+}
+
+.badge-cyan {
+  background: rgba(0, 229, 255, 0.1);
+  border-color: rgba(0, 229, 255, 0.4);
+  color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.15);
+}
+
+.badge-red {
+  background: rgba(255, 45, 85, 0.12);
+  border-color: rgba(255, 45, 85, 0.4);
+  color: var(--red-light);
+  box-shadow: 0 0 16px rgba(255, 45, 85, 0.15);
+}
+.badge-pink {
+  background: rgba(255, 20, 147, 0.12);
+  border-color: rgba(255, 20, 147, 0.4);
+  color: var(--pink-light);
+  box-shadow: 0 0 16px rgba(255, 20, 147, 0.15);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .profile-wrapper,
+  .profile-ring {
+    width: 130px;
+    height: 130px;
+  }
+}

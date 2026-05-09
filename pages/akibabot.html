@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AkibaBot — RYU Projects</title>
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="../css/akibabot.css" />
+  <link rel="icon" href="../assets/img/favicon.jpg" />
+</head>
+<body class="akiba-page">
+
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ░░ MATRIX RAIN CANVAS ░░ -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- ░░ HEADER ░░ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">RYU<span class="logo-dot">.</span></a>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../pages/contact.html" class="nav-link">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="../index.html" class="mob-link">Home</a>
+      <a href="../pages/contact.html" class="mob-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- ░░ MAIN ░░ -->
+  <main>
+
+    <!-- ══ HERO ══ -->
+    <section class="akiba-hero">
+      <div class="akiba-glow akiba-glow--pink"></div>
+      <div class="akiba-glow akiba-glow--blue"></div>
+
+      <!-- Japanese text decoration -->
+      <div class="jp-decor jp-decor--left" aria-hidden="true">
+        アキバ<br/>ボット<br/>開発<br/>者
+      </div>
+      <div class="jp-decor jp-decor--right" aria-hidden="true">
+        不和<br/>サーバ<br/>自動化<br/>実行
+      </div>
+
+      <div class="akiba-hero-inner">
+        <!-- Bot avatar -->
+        <div class="bot-avatar-wrap">
+          <div class="bot-avatar-hex">
+            <svg viewBox="0 0 200 230" class="hex-svg" aria-hidden="true" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs>
+                <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff2d78"/>
+                  <stop offset="50%" stop-color="#7b2fff"/>
+                  <stop offset="100%" stop-color="#00d4ff"/>
+                </linearGradient>
+                <!-- Dark vignette gradient fading bottom of the photo -->
+                <linearGradient id="hexVignette" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="50%" stop-color="transparent" stop-opacity="0"/>
+                  <stop offset="100%" stop-color="#060810" stop-opacity="0.65"/>
+                </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <!-- Clip to the inner hexagon shape -->
+                <clipPath id="hexClip">
+                  <polygon points="100,26 176,69 176,152 100,194 24,152 24,69"/>
+                </clipPath>
+              </defs>
+
+              <!--
+                ╔══════════════════════════════════════════╗
+                ║  TO CHANGE THE BOT PICTURE:              ║
+                ║  Replace the file at:                    ║
+                ║  assets/img/akibabot.jpg                 ║
+                ║  (any .jpg / .png / .webp works)          ║
+                ╚══════════════════════════════════════════╝
+              -->
+
+              <!-- 1. Photo fills the hex — clipped cleanly -->
+              <image
+                id="bot-photo"
+                href="../assets/img/akibabot.jpg"
+                xlink:href="../assets/img/akibabot.jpg"
+                x="24" y="26"
+                width="152" height="168"
+                clip-path="url(#hexClip)"
+                preserveAspectRatio="xMidYMid slice"
+              />
+
+              <!-- 2. Subtle scan-line texture (pure SVG, no external pattern needed) -->
+              <g clip-path="url(#hexClip)" pointer-events="none">
+                <rect x="24" y="26" width="152" height="168" fill="rgba(0,212,255,0.03)"
+                  style="background-image:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,212,255,0.04) 3px,rgba(0,212,255,0.04) 4px)"/>
+              </g>
+
+              <!-- 3. Bottom vignette — fades photo into the dark background -->
+              <rect x="24" y="26" width="152" height="168"
+                fill="url(#hexVignette)"
+                clip-path="url(#hexClip)"
+                pointer-events="none"/>
+
+              <!-- 4. Outer glowing hex border — drawn last so it sits on top -->
+              <polygon points="100,8 192,55 192,150 100,197 8,150 8,55"
+                fill="none" stroke="url(#hexGrad)" stroke-width="2.5" filter="url(#glow)"/>
+
+              <!-- 5. Inner border ring (very subtle) -->
+              <polygon points="100,26 176,69 176,152 100,194 24,152 24,69"
+                fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+              <!-- Corner decorations -->
+              <circle cx="8"   cy="55"  r="3" fill="#ff2d78" opacity="0.8"/>
+              <circle cx="192" cy="55"  r="3" fill="#00d4ff" opacity="0.8"/>
+              <circle cx="192" cy="150" r="3" fill="#7b2fff" opacity="0.8"/>
+              <circle cx="8"   cy="150" r="3" fill="#ff2d78" opacity="0.8"/>
+            </svg>
+          </div>
+          <!-- Status badge -->
+          <div class="bot-status">
+            <span class="status-dot"></span>
+            <span class="status-text">ONLINE</span>
+          </div>
+        </div>
+
+        <!-- Text block -->
+        <div class="akiba-hero-text">
+          <div class="akiba-eyebrow">
+            <span class="eyebrow-tag">Project_01</span>
+            <span class="eyebrow-divider">//</span>
+            <span class="eyebrow-sub">Discord Bot</span>
+          </div>
+          <h1 class="akiba-title">
+            <span class="akiba-title-main">AKIBA</span><span class="akiba-title-accent">BOT</span>
+          </h1>
+          <p class="akiba-subtitle">秋葉原ボット</p>
+          <p class="akiba-desc">
+            A custom Discord bot built in Python 3.14, designed exclusively
+            for a specific server. Features <strong>33 slash commands</strong> across
+            general, economy, and admin categories. Data stored via JavaScript.
+            Hosted by <span style="color:var(--ak-pink-light)">KataBump</span>.
+          </p>
+          <div class="akiba-tech-row">
+            <span class="atech-tag atech-python">
+              <svg class="atech-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.96 0C5.365 0 5.75 2.77 5.75 2.77l.007 2.87H12.07v.86H3.6S0 6.065 0 12.72s3.12 6.424 3.12 6.424h1.864v-3.09s-.1-3.12 3.07-3.12h5.29s2.97.048 2.97-2.87V3.1S16.77 0 11.96 0zM9.04 1.78a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92zM12.04 24c6.596 0 6.21-2.77 6.21-2.77l-.006-2.87H12.13v-.86h8.47S24 17.935 24 11.28s-3.12-6.424-3.12-6.424H19.016v3.09s.1 3.12-3.07 3.12H10.656s-2.97-.048-2.97 2.87v5.964S7.23 24 12.04 24zm2.92-1.78a.96.96 0 1 1 0-1.92.96.96 0 0 1 0 1.92z"/>
+              </svg>
+              Python 3.14
+            </span>
+            <span class="atech-tag atech-discord">
+              <svg class="atech-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.04.033.05a19.912 19.912 0 0 0 5.993 3.03.077.077 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+              discord.py
+            </span>
+            <span class="atech-tag atech-db">JavaScript</span>
+            <span class="atech-tag atech-api">Prefix: +</span>
+          </div>
+          <div class="akiba-cta-row">
+            <a href="#features" class="akiba-btn akiba-btn--secondary">
+              <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/>
+              </svg>
+              Features
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- scroll indicator -->
+      <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-hint-line"></span>
+        <span class="scroll-hint-text">SCROLL</span>
+      </div>
+    </section>
+
+    <!-- ══ TERMINAL PREVIEW ══ -->
+    <section class="akiba-terminal-section">
+      <div class="akiba-container">
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="terminal-title">akibabot — python bot.py</span>
+            <span class="terminal-tag">running</span>
+          </div>
+          <div class="terminal-body" id="terminal-body">
+            <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">python bot.py</span></div>
+            <div class="t-line t-delay-1"><span class="t-info">[INFO]</span> <span class="t-txt">Logging in as AkibaBot#4269...</span></div>
+            <div class="t-line t-delay-2"><span class="t-ok">[OK]</span>   <span class="t-txt">Connected to Discord Gateway · Python <span class="t-num">3.14</span></span></div>
+            <div class="t-line t-delay-3"><span class="t-ok">[OK]</span>   <span class="t-txt">Loaded cog: <span class="t-hl">general</span>  — avatar, ping, rps, profile...</span></div>
+            <div class="t-line t-delay-4"><span class="t-ok">[OK]</span>   <span class="t-txt">Loaded cog: <span class="t-hl">economy</span> — daily, slot, bank, shop...</span></div>
+            <div class="t-line t-delay-5"><span class="t-ok">[OK]</span>   <span class="t-txt">Loaded cog: <span class="t-hl">admin</span>   — ban, mute, giveaway...</span></div>
+            <div class="t-line t-delay-6"><span class="t-info">[INFO]</span> <span class="t-txt">JS data store loaded successfully</span></div>
+            <div class="t-line t-delay-7"><span class="t-info">[INFO]</span> <span class="t-txt">Prefix set to <span class="t-hl">+</span>  ·  Synced <span class="t-num">33</span> slash commands</span></div>
+            <div class="t-line t-delay-8"><span class="t-info">[INFO]</span> <span class="t-txt">Hosted by <span class="t-hl">KataBump</span></span></div>
+            <div class="t-line t-delay-9"><span class="t-ok">[OK]</span>   <span class="t-txt">AkibaBot is <span class="t-online">ONLINE</span> ✓</span></div>
+            <div class="t-line t-delay-10"><span class="t-cursor">█</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STATS BAR ══ -->
+    <section class="akiba-stats">
+      <div class="akiba-container">
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-number">33</span>
+            <span class="stat-label">Slash Commands</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Categories</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">3.14</span>
+            <span class="stat-label">Python Version</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">+</span>
+            <span class="stat-label">Bot Prefix</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FEATURES ══ -->
+    <section class="akiba-features" id="features">
+      <div class="akiba-container">
+        <div class="akiba-section-header">
+          <p class="section-label">// COMMANDS</p>
+          <h2 class="akiba-section-title">What AkibaBot Can Do</h2>
+        </div>
+
+        <div class="features-grid features-grid--3col">
+
+          <!-- GENERAL -->
+          <div class="feature-card fc--blue">
+            <div class="fc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+              </svg>
+            </div>
+            <div class="fc-category-badge fc-badge--blue">General</div>
+            <h3 class="fc-title">General Commands</h3>
+            <p class="fc-desc">
+              Utility and fun commands available to all members. Check profiles,
+              challenge friends, or just have fun with classic mini-games.
+            </p>
+            <div class="fc-command-list">
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+avatar</code>
+                <span class="fc-cmd-desc">Display a user's avatar</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+profile</code>
+                <span class="fc-cmd-desc">View your server profile &amp; stats</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+rps</code>
+                <span class="fc-cmd-desc">Play rock paper scissors vs the bot</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+tictactoe</code>
+                <span class="fc-cmd-desc">Challenge a member to tic-tac-toe</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+serverinfo</code>
+                <span class="fc-cmd-desc">Show server details &amp; statistics</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+afk</code>
+                <span class="fc-cmd-desc">Set an AFK status with a message</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+ping</code>
+                <span class="fc-cmd-desc">Check the bot's response latency</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+banner</code>
+                <span class="fc-cmd-desc">Display a user's profile banner</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ECONOMY -->
+          <div class="feature-card fc--pink">
+            <div class="fc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7v1m0 8v1M9.5 9.5a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5m0 1h.01"/>
+              </svg>
+            </div>
+            <div class="fc-category-badge fc-badge--pink">Economy</div>
+            <h3 class="fc-title">Economy Commands</h3>
+            <p class="fc-desc">
+              A full virtual economy system. Earn coins, gamble at the slots,
+              manage your bank, shop for items, and trade with other members.
+            </p>
+            <div class="fc-command-list">
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+daily</code>
+                <span class="fc-cmd-desc">Claim your daily coin reward</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+slot</code>
+                <span class="fc-cmd-desc">Spin the slot machine and win big</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+roulette</code>
+                <span class="fc-cmd-desc">Bet your coins on roulette</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+bank</code>
+                <span class="fc-cmd-desc">Check your wallet &amp; bank balance</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+deposit / +withdraw</code>
+                <span class="fc-cmd-desc">Move coins between wallet and bank</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+shop</code>
+                <span class="fc-cmd-desc">Browse &amp; purchase available items</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+inventory</code>
+                <span class="fc-cmd-desc">View, equip &amp; unequip your items</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+give</code>
+                <span class="fc-cmd-desc">Transfer coins to another member</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+top</code>
+                <span class="fc-cmd-desc">Display the richest members leaderboard</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADMIN -->
+          <div class="feature-card fc--purple">
+            <div class="fc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="fc-category-badge fc-badge--purple">Admin</div>
+            <h3 class="fc-title">Admin Commands</h3>
+            <p class="fc-desc">
+              Full moderation toolkit for server staff. Manage members, control
+              roles, and run giveaways — all with fine-grained permission control.
+            </p>
+            <div class="fc-command-list">
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+ban / +unban</code>
+                <span class="fc-cmd-desc">Ban or unban a member from the server</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+mute / +unmute</code>
+                <span class="fc-cmd-desc">Silence or restore a member's voice</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+createrole</code>
+                <span class="fc-cmd-desc">Create a new role with custom settings</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+addrole</code>
+                <span class="fc-cmd-desc">Assign a role to a specific member</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+removerole</code>
+                <span class="fc-cmd-desc">Remove a role from a member</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+giveaway start</code>
+                <span class="fc-cmd-desc">Launch a new giveaway with a timer</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+giveaway end</code>
+                <span class="fc-cmd-desc">End a running giveaway early</span>
+              </div>
+              <div class="fc-cmd-row">
+                <code class="fc-cmd">+giveaway reroll</code>
+                <span class="fc-cmd-desc">Pick a new winner for a past giveaway</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TECH STACK ══ -->
+    <section class="akiba-stack">
+      <div class="akiba-container">
+        <div class="akiba-section-header">
+          <p class="section-label">// BUILT WITH</p>
+          <h2 class="akiba-section-title">Tech Stack</h2>
+        </div>
+        <div class="stack-grid">
+          <div class="stack-item">
+            <div class="stack-icon stack-python">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.96 0C5.365 0 5.75 2.77 5.75 2.77l.007 2.87H12.07v.86H3.6S0 6.065 0 12.72s3.12 6.424 3.12 6.424h1.864v-3.09s-.1-3.12 3.07-3.12h5.29s2.97.048 2.97-2.87V3.1S16.77 0 11.96 0zM9.04 1.78a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92zM12.04 24c6.596 0 6.21-2.77 6.21-2.77l-.006-2.87H12.13v-.86h8.47S24 17.935 24 11.28s-3.12-6.424-3.12-6.424H19.016v3.09s.1 3.12-3.07 3.12H10.656s-2.97-.048-2.97 2.87v5.964S7.23 24 12.04 24zm2.92-1.78a.96.96 0 1 1 0-1.92.96.96 0 0 1 0 1.92z"/>
+              </svg>
+            </div>
+            <span class="stack-name">Python 3.14</span>
+          </div>
+          <div class="stack-item">
+            <div class="stack-icon stack-discord">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.04.033.05a19.912 19.912 0 0 0 5.993 3.03.077.077 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+              </svg>
+            </div>
+            <span class="stack-name">discord.py</span>
+          </div>
+          <div class="stack-item">
+            <div class="stack-icon stack-js">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/>
+              </svg>
+            </div>
+            <span class="stack-name">JavaScript</span>
+          </div>
+          <div class="stack-item">
+            <div class="stack-icon stack-db">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              </svg>
+            </div>
+            <span class="stack-name">Data Store</span>
+          </div>
+          <div class="stack-item">
+            <div class="stack-icon stack-host">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+            <span class="stack-name">KataBump</span>
+          </div>
+          <div class="stack-item">
+            <div class="stack-icon stack-git">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </div>
+            <span class="stack-name">GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BACK TO PORTFOLIO ══ -->
+    <section class="akiba-back">
+      <div class="akiba-container">
+        <a href="../index.html" class="back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Back to Portfolio
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">RYU<span class="logo-dot">.</span></span>
+        <p class="footer-sub">Building the future, one line at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html" class="footer-link">Home</a>
+        <a href="../pages/contact.html" class="footer-link">Contact</a>
+      </div>
+      <div class="footer-right">
+        <p class="footer-copy">&copy; <span id="year"></span> RYU. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-bar"></div>
+  </footer>
+
+  <script src="../js/particles.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/akibabot.js"></script>
+</body>
+</html>
